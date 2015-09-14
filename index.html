@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Way Binding!</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+</head>
+<body ng-app="app">
+  <div class="container">
+    <div class="row" ng-controller="ThoughtController" ng-init="init()">
+      <div>
+        <h1> Isn't this nifty? </h1>
+      </div>
+
+      <div>
+        <h2> The people's thoughts: </h2>
+        <div>
+          <div ng-repeat="thought in thoughts">
+            <div>{{ thought.name }} thinks {{ thought.thought }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3> What do you think? </h3>
+        <input ng-model="currentThinker">Your Name</input>
+        <input ng-model="currentThought">Your Thoughts</input>
+        <button ng-click="thinkThought()">Think!</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
