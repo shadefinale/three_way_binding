@@ -31,9 +31,9 @@
         </div>
 
         <div>
-          <h2> The people's thoughts: </h2>
+          <h2> The people's thoughts (sorted by popularity): </h2>
           <div class="thoughts">
-            <div class="col-md-6" ng-repeat="thought in thoughts">
+            <div class="col-md-6" ng-repeat="thought in thoughts | byScore">
               <div><h3>{{ thought.name }} thinking {{ thought.thought }}</h3><br>
                 <button class="btn btn-success" ng-click="agreeThought(thought)">Agree</button> {{ thought.agree}} people agree! |
                 {{ thought.disagree}} people disagree! <button class="btn btn-danger" ng-click="disagreeThought(thought)">Disagree</button>

@@ -38,3 +38,11 @@ app.controller("ThoughtController", function($scope, $firebaseArray){
     }
   }
 );
+
+app.filter("byScore", function(){
+  return function(collection){
+    return collection.sort(function(thoughtA, thoughtB){
+      return (thoughtB.agree - thoughtB.disagree) - (thoughtA.agree - thoughtA.disagree);
+    })
+  }
+});
