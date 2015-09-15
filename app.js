@@ -9,9 +9,32 @@ app.controller("ThoughtController", function($scope, $firebaseArray){
     $scope.currentThinker = "";
     $scope.currentThought = "";
 
+    $scope.agreeThought = function(thought){
+      thought.agree++;
+      $scope.thoughts.$save(thought);
+    }
+
+    $scope.disagreeThought = function(thought){
+      thought.disagree++;
+      $scope.thoughts.$save(thought);
+    }
+
     $scope.thinkThought = function(){
+      if (!$scope.currentThought || $scope.currentThought == ""){
+        $scope.currentThought = "of nothing, as always..."
+      }
+
+      if (!$scope.currentThinker || $scope.currentThinker == ""){
+        $scope.currentThinker = "Nobody's"
+      }
+
       $scope.thoughts.$add({ thought: $scope.currentThought,
-                        name: $scope.currentThinker })
+                             name: $scope.currentThinker,
+                             agree: 0,
+                             disagree: 0,})
+
+      $scope.currentThinker = "";
+      $scope.currentThought = "";
     }
   }
 );

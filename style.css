@@ -1,0 +1,10 @@
+.thoughts {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.thought-form {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 10px;
+}

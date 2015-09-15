@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Three Way Binding!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
@@ -10,24 +12,36 @@
 <body ng-app="app">
   <div class="container">
     <div class="row" ng-controller="ThoughtController" ng-init="init()">
-      <div>
-        <h1> Isn't this nifty? </h1>
-      </div>
 
-      <div>
-        <h2> The people's thoughts: </h2>
+      <div class="col-md-10 col-md-offset-1 text-center">
+
+        <h1> Think a Thought, any thought! </h1>
+
+        <div class="thought-form">
+          <div class="form-group">
+            <label for="name">Who are you?</label></br>
+            <input id="name" ng-model="currentThinker"></input>
+          </div>
+
+          <div class="form-group">
+            <label for="thought">What do you think?</label></br>
+            <input id="thought" ng-model="currentThought"></input>
+          </div>
+          <button class="btn btn-info" ng-click="thinkThought()">Think!</button>
+        </div>
+
         <div>
-          <div ng-repeat="thought in thoughts">
-            <div>{{ thought.name }} thinks {{ thought.thought }}</div>
+          <h2> The people's thoughts: </h2>
+          <div class="thoughts">
+            <div class="col-md-6" ng-repeat="thought in thoughts">
+              <div><h3>{{ thought.name }} thinking {{ thought.thought }}</h3><br>
+                <button class="btn btn-success" ng-click="agreeThought(thought)">Agree</button> {{ thought.agree}} people agree! |
+                {{ thought.disagree}} people disagree! <button class="btn btn-danger" ng-click="disagreeThought(thought)">Disagree</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div>
-        <h3> What do you think? </h3>
-        <input ng-model="currentThinker">Your Name</input>
-        <input ng-model="currentThought">Your Thoughts</input>
-        <button ng-click="thinkThought()">Think!</button>
       </div>
     </div>
   </div>
