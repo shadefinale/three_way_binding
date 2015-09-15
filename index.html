@@ -4,12 +4,19 @@
   <meta charset="UTF-8">
   <title>Three Way Binding!</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
 </head>
 <body ng-app="app">
+  <div class="github-fork-ribbon-wrapper right">
+      <div class="github-fork-ribbon">
+          <a href="https://github.com/shadefinale/three_way_binding">View me on GitHub!</a>
+      </div>
+  </div>
+
   <div class="container">
     <div class="row" ng-controller="ThoughtController" ng-init="init()">
 
@@ -34,9 +41,18 @@
           <h2> The people's thoughts (sorted by popularity): </h2>
           <div class="thoughts">
             <div class="col-md-6" ng-repeat="thought in thoughts | byScore">
-              <div><h3>{{ thought.name }} thinking {{ thought.thought }}</h3><br>
-                <button class="btn btn-success" ng-click="agreeThought(thought)">Agree</button> {{ thought.agree}} people agree! |
-                {{ thought.disagree}} people disagree! <button class="btn btn-danger" ng-click="disagreeThought(thought)">Disagree</button>
+              <div>
+              <h3>{{ thought.name }} thinking {{ thought.thought }}</h3><br>
+
+                <button class="btn btn-success" ng-click="agreeThought(thought)">
+                  Agree
+                </button> {{ thought.agree}} people agree! |
+
+                {{ thought.disagree}} people disagree!
+                <button class="btn btn-danger" ng-click="disagreeThought(thought)">
+                  Disagree
+                </button>
+
               </div>
             </div>
           </div>
